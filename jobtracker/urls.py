@@ -14,8 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
+"""
+Namespaces are unique across the entire project. 
+The jobs URLs can easily be accessed by using the namespace followed by a colon and the URL name,
+e.g, jobs:list and jobs:detail. 
+"""
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('jobs/', include('jobs.urls', namespace='job'))
 ]

@@ -1,0 +1,18 @@
+<h3>Detail page</h3>
+
+<p>Company name: {{ application.company_name }}</p>
+<p>Position: {{ application.position }}</p>
+<p>CV: {{ application.cv }}</p>
+<p>Cover letter: {{ application.cover_letter }}</p>
+<p>Response: {{ application.response }}</p>
+<p>Date applied: {{ application.date_applied }}</p>
+<p>First followup: {{ application.followup1 }}</p>
+<p>Second followup: {{ application.followup2 }}</p>
+<p>Third followup: {{ application.followup3 }}</p>
+
+
+{% if application.job %}
+    <p>Recruiter's name: {{ application.job.name }}</p>
+    <p>Phone number: {{ application.job.phone_no }}</p>
+    <p>Email: {{ application.job.email }}</p>
+{% endif %}

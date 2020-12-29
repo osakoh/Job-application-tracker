@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Job(models.Model):
@@ -25,9 +26,12 @@ class Job(models.Model):
     def __str__(self):
         return self.company_name
 
+    def get_absolute_url(self):
+        return reverse('job:detail', args=[self.pk])
+
 
 class Contact(models.Model):
-    job = models.OneToOneField(Job, null=True, on_delete=models.CASCADE)
+    job = models.OneToOneField(Job, null=True, on_delete=models.CASCADE, related_name='job')
     name = models.CharField(max_length=40)
     phone_no = models.CharField(max_length=11, blank=True)
     email = models.EmailField(max_length=100, blank=True)

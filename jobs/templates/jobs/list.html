@@ -1,0 +1,32 @@
+{% if jobs %}
+    <table border="1">
+        <tr>
+            <th>Company name</th>
+            <th>Position</th>
+            <th>CV</th>
+            <th>Cover letter</th>
+            <th>Response</th>
+            <th>Date applied</th>
+            <th>First followup</th>
+            <th>Second followup</th>
+            <th>Third followup</th>
+        </tr>
+        {% for job in jobs %}
+            <tr>
+                <!--                 <td><a href="{% url 'job:detail' job.id %}">{{ job.company_name }}</a></td>-->
+                <td><a href="{{ job.get_absolute_url }}">{{ job.company_name }}</a></td>
+                <td>{{ job.position }}</td>
+                <td>{{ job.cv }}</td>
+                <td>{{ job.cover_letter }}</td>
+                <td>{{ job.response }}</td>
+                <td>{{ job.date_applied }}</td>
+                <td>{{ job.followup1 }}</td>
+                <td>{{ job.followup2 }}</td>
+                <td>{{ job.followup3 }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+{% else %}
+    <p>You haven't sent any application.</p>
+{% endif %}
